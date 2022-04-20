@@ -2,3 +2,4 @@
 src/__pycache__
 src/emotions_model
 src/heBERT
+test.py
