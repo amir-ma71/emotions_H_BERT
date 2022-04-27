@@ -32,8 +32,12 @@ def prepare_text():
     if len(sent)< 40:
         return "your text is too small, please type more words to detect",400
     # Prepare the text
+    final_dict = {"dependency": []}
+    final_dict["probability"] = HebEMO_model.hebemo(text=sent)
+    for emo, prob in final_dict["probability"].items():
+        if prob > 0.35:
+            final_dict["dependency"].append(emo)
 
-    final_dict = HebEMO_model.hebemo(text=sent)
 
     # Return on a JSON format
     return final_dict
